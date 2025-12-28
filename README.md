@@ -57,3 +57,13 @@ Do these steps only once when setting up the project for the first time:
    ```sh
    php artisan migrate
    ```
+
+## Running the App
+Use these commands every time you want to start the web application:
+```sh
+composer run dev
+```
+Then visit `http://localhost:8000/pokemons` in your browser.
+
+## License
+For educational and demonstration purposes only.
