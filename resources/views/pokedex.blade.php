@@ -20,9 +20,6 @@
         @endif
     </head>
 <body class="font-mono">
-    <div class="flex flex-wrap gap-5 p-10 justify-center">
-        <div class="w-full text-left mb-5">
-            
     @foreach ($pokemons as $pokemon)
         <x-cards.a :image="$pokemon->sprite_url">
             <x-slot:header>
