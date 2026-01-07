@@ -3,35 +3,43 @@
 
         <!-- Back to Pokedex Button -->
         <!-- Back Button -->
-        <a href="{{ route('pokemons.index') }}" class="inline-block mb-6 text-blue-600 hover:underline">
-            ← Back to Pokédex
+        <a href="{{ route('pokemons.index') }}"
+            class="inline-flex items-center gap-2 mb-6 px-4 py-2
+          bg-white text-black border-2 border-black
+          rounded-sm shadow-sm
+          hover:bg-black hover:text-white
+          active:translate-y-[1px]
+          transition">
+            ⬅ Back to Pokédex
         </a>
 
         <!-- Bottom Navigation -->
         <div class="absolute inset-x-0 bottom-4 flex justify-between px-8">
 
-            <!-- Previous -->
-            <div>
-                @if ($prevPokemon)
-                    <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
-                        class="text-blue-600 hover:underline font-medium">
-                        ← Previous
-                    </a>
-                @endif
-            </div>
+            @if ($prevPokemon)
+                <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
+                    class="px-4 py-2 bg-white text-black border-2 border-black
+                  rounded-sm shadow-sm
+                  hover:bg-black hover:text-white
+                  active:translate-y-[1px]
+                  transition">
+                    ← Previous
+                </a>
+            @endif
 
-            <!-- Next -->
-            <div>
-                @if ($nextPokemon)
-                    <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
-                        class="text-blue-600 hover:underline font-medium">
-                        Next →
-                    </a>
-                @endif
-            </div>
+            <!-- Next Button --> 
+            @if ($nextPokemon)
+                <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
+                    class="px-4 py-2 bg-white text-black border-2 border-black
+                  rounded-sm shadow-sm
+                  hover:bg-black hover:text-white
+                  active:translate-y-[1px]
+                  transition">
+                    Next →
+                </a>
+            @endif
 
         </div>
-
 
         <!-- Main Card -->
         <div class="max-w-5xl mx-auto bg-slate-50 rounded-xl shadow-lg p-8">
