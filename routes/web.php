@@ -8,4 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/pokemons', [BasePokemonController::class, 'index'])->name('pokemons.index');
-Route::get('/pokemons/{id}', [BasePokemonController::class, 'show'])->name('pokemons.show');
+Route::get('/pokemons/{pokedexId}', [BasePokemonController::class, 'show'])->name('pokemons.show');

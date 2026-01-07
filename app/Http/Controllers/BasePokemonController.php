@@ -36,9 +36,9 @@ class BasePokemonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($pokedexId)
     {
-        $pokemon = BasePokemon::where('pokedex_id', $id)->firstOrFail();
+        $pokemon = BasePokemon::where('pokedex_id', $pokedexId)->firstOrFail();
 
         return view('pokemons.show', compact('pokemon'));
     }
