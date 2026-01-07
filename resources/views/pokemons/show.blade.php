@@ -1,35 +1,40 @@
 <x-layout>
     <div class="p-10">
-<<<<<<< HEAD
 
         <!-- Back to Pokedex Button -->
-=======
         <!-- Back Button -->
->>>>>>> 39010d8bd2b9abd659899b382eea00977d27d6ae
         <a href="{{ route('pokemons.index') }}" class="inline-block mb-6 text-blue-600 hover:underline">
             ← Back to Pokédex
         </a>
 
-        <!-- Previous Button --><!-- Previous -->
-        @if ($prevPokemon)
-            <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}" class="text-blue-600 hover:underline">
-                ← Previous
-            </a>
-        @else
-            <span></span>
-        @endif
+        <!-- Bottom Navigation -->
+        <div class="absolute inset-x-0 bottom-4 flex justify-between px-8">
 
-        <!-- Next Button -->
-        @if ($nextPokemon)
-            <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}" class="text-blue-600 hover:underline">
-                Next →
-            </a>
-        @else
-            <span></span>
-        @endif
+            <!-- Previous -->
+            <div>
+                @if ($prevPokemon)
+                    <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
+                        class="text-blue-600 hover:underline font-medium">
+                        ← Previous
+                    </a>
+                @endif
+            </div>
+
+            <!-- Next -->
+            <div>
+                @if ($nextPokemon)
+                    <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
+                        class="text-blue-600 hover:underline font-medium">
+                        Next →
+                    </a>
+                @endif
+            </div>
+
+        </div>
+
 
         <!-- Main Card -->
-        <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <div class="max-w-5xl mx-auto bg-slate-50 rounded-xl shadow-lg p-8">
 
             <!-- Header -->
             <h1 class="text-3xl font-bold mb-6">
@@ -41,19 +46,16 @@
 
                 <!-- Image Box (LEFT) -->
                 <div class="flex justify-center items-center w-full md:w-1/3">
-                    <div class="border rounded-xl p-6 shadow-md bg-slate-50">
-<<<<<<< HEAD
+                    <div class="border border-slate-200 rounded-xl p-8 shadow-md bg-white w-80 flex justify-center">
                         <img src="{{ $pokemon->sprite_url }}" alt="{{ $pokemon->name }}"
-                            class="w-48 h-48 object-contain"
-=======
-                        <img src="{{ $pokemon->sprite_url }}" alt="{{ $pokemon->name }}" class="w-48 h-48 object-contain"
->>>>>>> 39010d8bd2b9abd659899b382eea00977d27d6ae
+                            class="w-48 h-48 object-contain" <img src="{{ $pokemon->sprite_url }}"
+                            alt="{{ $pokemon->name }}" class="w-48 h-48 object-contain"
                             onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
                     </div>
                 </div>
 
                 <!-- Info Box (RIGHT) -->
-                <div class="flex-1 border rounded-xl p-6 bg-slate-50 shadow-md">
+                <div class="flex-1 border rounded-xl p-6 bg-white shadow-md">
                     <h2 class="text-xl font-semibold mb-4">Pokémon Information</h2>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-lg">
@@ -68,6 +70,18 @@
                 </div>
 
             </div>
+
+            <!-- Description -->
+            <div class="mt-8 border rounded-xl bg-slate-50 p-6 bg-white shadow-sm">
+                <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                    🕮 Description
+                </h3>
+
+                <p class="text-gray-700 leading-relaxed">
+                    {{ $pokemon->description ?? 'No description available for this Pokémon yet.' }}
+                </p>
+            </div>
+
         </div>
     </div>
 </x-layout>
