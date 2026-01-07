@@ -2,11 +2,28 @@
 
     <div class="p-10">
 
-        <!-- Back Button -->
-        <a href="{{ route('pokemons.index') }}"
-           class="inline-block mb-6 text-blue-600 hover:underline">
+        <!-- Back to Pokedex Button -->
+        <a href="{{ route('pokemons.index') }}" class="inline-block mb-6 text-blue-600 hover:underline">
             ← Back to Pokédex
         </a>
+
+        <!-- Previous Button --><!-- Previous -->
+        @if ($prevPokemon)
+            <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}" class="text-blue-600 hover:underline">
+                ← Previous
+            </a>
+        @else
+            <span></span>
+        @endif
+
+        <!-- Next Button -->
+        @if ($nextPokemon)
+            <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}" class="text-blue-600 hover:underline">
+                Next →
+            </a>
+        @else
+            <span></span>
+        @endif
 
         <!-- Main Card -->
         <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg p-8">
@@ -22,12 +39,9 @@
                 <!-- Image Box (LEFT) -->
                 <div class="flex justify-center items-center w-full md:w-1/3">
                     <div class="border rounded-xl p-6 shadow-md bg-slate-50">
-                        <img 
-                            src="{{ $pokemon->sprite_url }}" 
-                            alt="{{ $pokemon->name }}"
+                        <img src="{{ $pokemon->sprite_url }}" alt="{{ $pokemon->name }}"
                             class="w-48 h-48 object-contain"
-                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';"
-                        >
+                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
                     </div>
                 </div>
 
