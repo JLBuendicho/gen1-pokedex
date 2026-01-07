@@ -44,6 +44,8 @@ return new class extends Migration
 
             $table->string('description');
 
+            $table->string('evolution_line_id')->nullable(); // foreign key to evolution_chains table
+
             $table->timestamps();
         });
     }

@@ -30,5 +30,7 @@ class BasePokemon extends Model
         'base_move3',
         'base_move4',
         'sprite_url',
+        'description',
+        'evolution_line_id',
     ];
 }
