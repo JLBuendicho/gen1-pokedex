@@ -5,8 +5,7 @@
         <!-- Back Button -->
         <a href="{{ route('pokemons.index') }}"
             class="inline-flex items-center gap-2 mb-6 px-4 py-2
-          bg-white text-black border-2 border-black
-          rounded-sm shadow-sm
+          bg-white text-gray rounded-sm
           hover:bg-black hover:text-white
           active:translate-y-[1px]
           transition">
@@ -14,12 +13,14 @@
         </a>
 
         <!-- Bottom Navigation -->
+
+        <!-- Previous Button --> 
         <div class="absolute inset-x-0 bottom-4 flex justify-between px-8">
 
             @if ($prevPokemon)
                 <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
-                    class="px-4 py-2 bg-white text-black border-2 border-black
-                  rounded-sm shadow-sm
+                    class="px-4 py-2 bg-white text-gray
+                  bg-white text-gray rounded-sm
                   hover:bg-black hover:text-white
                   active:translate-y-[1px]
                   transition">
@@ -27,11 +28,11 @@
                 </a>
             @endif
 
-            <!-- Next Button --> 
+            <!-- Next Button -->
             @if ($nextPokemon)
                 <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
-                    class="px-4 py-2 bg-white text-black border-2 border-black
-                  rounded-sm shadow-sm
+                    class="px-4 py-2 bg-white text-gray
+                  rounded-sm 
                   hover:bg-black hover:text-white
                   active:translate-y-[1px]
                   transition">
