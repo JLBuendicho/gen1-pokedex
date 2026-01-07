@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
 <x-layout>
-=======
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -1523,7 +1521,7 @@
 </head>
 
 <body class="font-mono">
->>>>>>> Stashed changes
+
     <div class="flex flex-wrap gap-5 p-10 justify-center">
         @foreach ($pokemons as $pokemon)
             <x-cards.a :image="$pokemon->sprite_url">
@@ -1533,10 +1531,10 @@
             </x-cards.a>
         @endforeach
     </div>
-<<<<<<< Updated upstream
+
 </x-layout>
-=======
+
 </body>
 
 </html>
->>>>>>> Stashed changes
+
