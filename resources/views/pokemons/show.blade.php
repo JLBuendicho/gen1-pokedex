@@ -1,10 +1,7 @@
 <x-layout>
-
     <div class="p-10">
-
         <!-- Back Button -->
-        <a href="{{ route('pokemons.index') }}"
-           class="inline-block mb-6 text-blue-600 hover:underline">
+        <a href="{{ route('pokemons.index') }}" class="inline-block mb-6 text-blue-600 hover:underline">
             ← Back to Pokédex
         </a>
 
@@ -22,12 +19,8 @@
                 <!-- Image Box (LEFT) -->
                 <div class="flex justify-center items-center w-full md:w-1/3">
                     <div class="border rounded-xl p-6 shadow-md bg-slate-50">
-                        <img 
-                            src="{{ $pokemon->sprite_url }}" 
-                            alt="{{ $pokemon->name }}"
-                            class="w-48 h-48 object-contain"
-                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';"
-                        >
+                        <img src="{{ $pokemon->sprite_url }}" alt="{{ $pokemon->name }}" class="w-48 h-48 object-contain"
+                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
                     </div>
                 </div>
 
@@ -48,7 +41,5 @@
 
             </div>
         </div>
-
     </div>
-
 </x-layout>
