@@ -20,20 +20,14 @@
         @endif
     </head>
 <body class="font-mono">
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
+    <div class="flex flex-wrap gap-5 p-10 justify-center">
     @foreach ($pokemons as $pokemon)
-        <a href="{{ route('pokemons.show', $pokemon->pokedex_id) }}"
-            class="block w-[180px] cursor-pointer hover:scale-105 transition-transform"> 
-
         <x-cards.a :image="$pokemon->sprite_url">
             <x-slot:header>
-                #{{ $pokemon->pokedex_id }} {{ $pokemon ->name }}
+                #{{ $pokemon->pokedex_id }} {{ $pokemon->name }}
             </x-slot:header>
         </x-cards.a>
-  
-        </a>
-   @endforeach
-
+    @endforeach
     </div>
 </body>
 </html>
