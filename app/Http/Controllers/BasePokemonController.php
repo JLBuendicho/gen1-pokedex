@@ -40,6 +40,19 @@ class BasePokemonController extends Controller
     {
         $pokemon = BasePokemon::where('pokedex_id', $id)->firstOrFail();
 
+        $evolutionLineIds = explode('|', $pokemon->evolution_line_id);
+        $evolutions = [];
+
+        foreach ($evolutionLineIds as $evolutionId) {
+            $evolution = BasePokemon::where('pokedex_id', $evolutionId)
+                ->firstOrFail();
+            $evolutions[] = $evolution;
+        }
+
+        if ($evolutions[0]->pokedex_id === $evolutions[1]->pokedex_id) {
+            $evolutions = [$evolutions[0]];
+        }
+
         $nextPokemon = BasePokemon::where('pokedex_id', '>', $id)
             ->orderBy('pokedex_id')
             ->first();
@@ -51,7 +64,8 @@ class BasePokemonController extends Controller
         return view('pokemons.show', compact(
             'pokemon',
             'nextPokemon',
-            'prevPokemon'
+            'prevPokemon',
+            'evolutions',
         ));
     }
 

@@ -91,6 +91,19 @@
                 </p>
             </div>
 
+            <!-- Evolution Line -->
+            <div class="flex">
+                @foreach ($evolutions as $evolution)
+                    <div class="flex flex-col items-center mx-4">
+                        <img src="{{ $evolution->sprite_url }}" alt="{{ $evolution->name }}"
+                            class="w-24 h-24 object-contain mb-2"
+                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
+                        <span class="text-center">{{ $evolution->name }}</span>
+                    </div>
+                
+                @endforeach
+            </div>
+
         </div>
     </div>
 </x-layout>
