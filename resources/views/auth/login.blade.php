@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <x-slot:message>
+        <h1 class="text-center">
+            Hey there! My memory fails me.<br>Could you remind me who you are again?<br>I sincerly apologize for fotgetting (￣▽￣;)
+        </h1>
+    </x-slot:message>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 

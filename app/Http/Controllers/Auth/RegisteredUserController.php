@@ -41,6 +41,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => 'trainer',
+            'avatar_url' => $request->avatar_url,
         ]);
 
         if ($user->role === 'trainer') {
