@@ -26,7 +26,7 @@
         <h1 class="text-2xl md:text-3xl">Pokémon</h1>
         <div>
     </header>
-    <main>
+    <main class="pt-20">
         {{ $slot }}
     </main>
 </body>
