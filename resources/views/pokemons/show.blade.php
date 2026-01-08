@@ -14,7 +14,7 @@
 
         <!-- Bottom Navigation -->
 
-        <!-- Previous Button --> 
+        <!-- Previous Button -->
         <div class="absolute inset-x-0 bottom-4 flex justify-between px-8">
 
             @if ($prevPokemon)
@@ -92,16 +92,32 @@
             </div>
 
             <!-- Evolution Line -->
-            <div class="flex">
-                @foreach ($evolutions as $evolution)
-                    <div class="flex flex-col items-center mx-4">
-                        <img src="{{ $evolution->sprite_url }}" alt="{{ $evolution->name }}"
-                            class="w-24 h-24 object-contain mb-2"
-                            onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
-                        <span class="text-center">{{ $evolution->name }}</span>
-                    </div>
-                
-                @endforeach
+            <div class="mt-8 border rounded-xl bg-slate-50 p-6 bg-white shadow-sm">
+                <h3 class="tex-lg font-semibold mb-3 flex-row items-center gap 2">
+                    Evolution Line
+                </h3>
+
+                <div class="flex flex-row justify-center items-center gap-6">
+                    @foreach ($evolutions as $index => $evolution)
+                        <!-- Pokemon Card -->
+                        <div class="flex-row items-center">
+                            <img src="{{ $evolution->sprite_url }}" alt="{{ $evolution->name }}"
+                                class="w-28 h-28 object-contain mb-6"
+                                onerror="this.src='https://img.pokemondb.net/sprites/red-blue/normal/bulbasaur.png';">
+
+                            <span class="text-center text-lg font-semibold">
+                                {{ $evolution->name }}
+                            </span>
+                        </div>
+
+                        <!-- Arrow -->
+                        @if ($index < count($evolutions) - 1)
+                            <div class="text-4xl font-bold text-gray-400 select-none flex-row">
+                                →
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
             </div>
 
         </div>
