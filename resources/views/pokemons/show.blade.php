@@ -135,19 +135,22 @@
             </div>
 
             <!-- Moves -->
-            <p>
-                <strong>Moves:</strong>
+            <div class="mt-8 border rounded-xl p-6 bg-white shadow-sm">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    Moves
+                </h3>
 
-                <span class="ml-2">
+                <div class="flex flex-wrap gap-3">
                     @forelse ($baseMoves as $move)
-                        <span class="inline-block px-2 py-1 mr-2 mb-1">
+                        <span
+                            class="flex items-center px-3 py-1 text-sm font-medium">
                             {{ $move }}
                         </span>
                     @empty
-                        <span class="text-black">N/A</span>
+                        <span class="text-black">No moves available.</span>
                     @endforelse
-                </span>
-            </p>
+                </div>
+            </div>
 
         </div>
     </div>
