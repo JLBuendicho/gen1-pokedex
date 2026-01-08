@@ -20,14 +20,16 @@
         @endif
     </head>
 <body class="font-mono">
-    <header class="p-4 md:px-6 relative flex justify-between">
-        <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
-        <img src="{{ asset('images/pokeball.png') }}" alt="Pokémon Logo" class="w-8 md:w-10">
-        <h1 class="hidden text-3xl md:block">Pokémon</h1>
-        </a>
-        <nav class="px-2 text-lg flex items-center gap-2">
-            {{ $navLinks ?? '' }}
-        </nav>
+    <header class="p-4 md:px-6 fixed bg-white w-full">
+        <div class="flex justify-between">
+            <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
+            <img src="{{ asset('images/pokeball.png') }}" alt="Pokémon Logo" class="w-8 md:w-10">
+            <h1 class="hidden text-3xl md:block">Pokémon</h1>
+            </a>
+            <nav class="px-2 text-lg flex items-center gap-2">
+                {{ $navLinks ?? '' }}
+            </nav>
+        </div>
     </header>
     <main {{ $attributes->merge(['class' => 'min-h-screen']) }}>
         {{ $slot }}

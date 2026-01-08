@@ -20,7 +20,7 @@
         @endif
     </head>
 <body class="font-mono">
-    <header class="p-4 flex">
+    <header class="p-4 md:px-6 fixed bg-white w-full">
         <div class="flex items-center gap-2">
         <img src="{{ asset('images/pokeball.png') }}" alt="Pokémon Logo" class="w-8 md:w-10">
         <h1 class="text-2xl md:text-3xl">Pokémon</h1>
