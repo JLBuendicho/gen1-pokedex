@@ -26,7 +26,7 @@
             <img src="{{ asset('images/pokeball.png') }}" alt="Pokémon Logo" class="w-8 md:w-10">
             <h1 class="hidden text-3xl md:block">Pokémon</h1>
             </a>
-            <nav class="px-2 text-lg flex items-center gap-2">
+            <nav class="px-2 text-md flex items-center gap-2">
                 {{ $navLinks ?? '' }}
             </nav>
         </div>

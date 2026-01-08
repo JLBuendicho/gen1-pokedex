@@ -12,7 +12,7 @@
     <div id="pokemonGrid" class="flex flex-wrap gap-5 p-10 justify-center">
         @foreach ($pokemons as $pokemon)
             <div class="pokemon-card" data-name="{{ strtolower($pokemon->name) }}" data-id="{{ $pokemon->pokedex_id }}">
-                <x-cards.a :href="route('pokemons.show', ['pokedexId' => $pokemon->pokedex_id])" :image="$pokemon->sprite_url" class="p-4 w-48">
+                <x-cards.a :href="route('pokemons.show', ['pokedexId' => $pokemon->pokedex_id])" :image="$pokemon->sprite_url" class="p-4 w-48 hover:shadow-lg">
                     <x-slot:header>
                         {{ $pokemon->pokedex_id }} {{ $pokemon->name }}
                     </x-slot:header>

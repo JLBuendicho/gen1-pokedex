@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Trainer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,15 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $user = auth()->user();
+        if ($user->role === 'trainer') {
+            $trainer = Trainer::where('user_id', $user->id)->first();
+
+            if ($trainer->pokemons_caught === '') {
+                return redirect()->route('starter');
+            }
+        }
 
         return redirect()->intended(route('dashboard', absolute: false));
     }
