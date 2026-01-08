@@ -75,6 +75,20 @@
                         <p><strong>Min Attack:</strong> {{ $pokemon->min_attack ?? 'N/A' }}</p>
                         <p><strong>Max Attack:</strong> {{ $pokemon->max_attack ?? 'N/A' }}</p>
                         <p><strong>Speed:</strong> {{ $pokemon->max_speed ?? 'N/A' }}</p>
+                        <p>
+                            <strong>Abilities:</strong>
+
+                            <span class="ml-2">
+                                @forelse ($abilities as $ability)
+                                    <span class="gap-2 text-lg">
+                                        {{ $ability }}
+                                    </span>
+                                @empty
+                                    <span class="text-black">N/A</span>
+                                @endforelse
+                            </span>
+                        </p>
+
                     </div>
                 </div>
 
@@ -117,6 +131,24 @@
                             </div>
                         @endif
                     @endforeach
+                </div>
+            </div>
+
+            <!-- Moves -->
+            <div class="mt-8 border rounded-xl p-6 bg-white shadow-sm">
+                <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
+                    Moves
+                </h3>
+
+                <div class="flex flex-wrap gap-3">
+                    @forelse ($baseMoves as $move)
+                        <span
+                            class="flex items-center px-3 py-1 text-sm font-medium">
+                            {{ $move }}
+                        </span>
+                    @empty
+                        <span class="text-black">No moves available.</span>
+                    @endforelse
                 </div>
             </div>
 

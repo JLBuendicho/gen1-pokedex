@@ -40,6 +40,27 @@ class BasePokemonController extends Controller
     {
         $pokemon = BasePokemon::where('pokedex_id', $id)->firstOrFail();
 
+        $baseMoves = \DB::table('base_pokemon')
+            ->where('pokedex_id', $pokemon->pokedex_id)
+            ->get(['base_move1', 'base_move2', 'base_move3', 'base_move4'])
+            ->flatMap(function ($row) {
+                return collect([
+                    $row->base_move1,
+                    $row->base_move2,
+                    $row->base_move3,
+                    $row->base_move4,
+                ]);
+            })
+            ->filter()
+            ->unique()
+            ->values();
+
+        $abilities = \DB::table('base_pokemon')
+            ->where('pokedex_id', $pokemon->pokedex_id)
+            ->whereNotNull('base_abilities')
+            ->distinct()
+            ->pluck('base_abilities');
+
         $evolutionLineIds = explode('|', $pokemon->evolution_line_id);
         $evolutions = [];
 
@@ -66,6 +87,8 @@ class BasePokemonController extends Controller
             'nextPokemon',
             'prevPokemon',
             'evolutions',
+            'abilities',
+            'baseMoves'
         ));
     }
 
