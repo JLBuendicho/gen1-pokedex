@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Trainer;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,8 +40,16 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'user',
+            'role' => 'trainer',
         ]);
+
+        if ($user->role === 'trainer') {
+            Trainer::create([
+                'user_id' => $user->id,
+                'pokemons_caught' => '',
+                'pokemon_team' => '',
+            ]);
+        }
 
         event(new Registered($user));
 
