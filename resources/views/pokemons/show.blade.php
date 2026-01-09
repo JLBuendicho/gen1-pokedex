@@ -12,29 +12,33 @@
             ⬅ Back to Pokédex
         </a>
 
-        <!-- Bottom Navigation -->
-
-        <!-- Previous Button -->
+        <!-- Floating Navigation Arrows -->
         <div
-            class="fixed sm:absolute inset-x-0 bottom-2 sm:bottom-4 
-            flex justify-between px-3 sm:px-8 z-40">
+            class="fixed inset-y-0 left-0 right-0 
+            flex justify-between items-center 
+            px-2 sm:px-6 lg:px-12
+            pointer-events-none z-40">
 
-            <!-- Previous Button -->
+            <!-- Previous -->
             <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
-                class="px-4 py-2 bg-white text-gray rounded-sm
-               hover:bg-black hover:text-white
-               active:translate-y-[1px]
-               transition">
-                ← Previous
+                class="pointer-events-auto
+              flex items-center justify-center
+              w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16
+              rounded-full bg-white/90 border border-black
+              shadow-lg hover:bg-black hover:text-white
+              transition active:scale-95">
+                <span class="text-xl sm:text-3xl lg:text-4xl">‹</span>
             </a>
 
-            <!-- Next Button -->
+            <!-- Next -->
             <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
-                class="px-4 py-2 bg-white text-gray rounded-sm
-               hover:bg-black hover:text-white
-               active:translate-y-[1px]
-               transition">
-                Next →
+                class="pointer-events-auto
+              flex items-center justify-center
+              w-11 h-11 sm:w-14 sm:h-14 lg:w-16 lg:h-16
+              rounded-full bg-white/90 border border-black
+              shadow-lg hover:bg-black hover:text-white
+              transition active:scale-95">
+                <span class="text-xl sm:text-3xl lg:text-4xl">›</span>
             </a>
 
         </div>
@@ -119,7 +123,6 @@
                     min-w-max px-2">
 
                         @foreach ($evolutions as $index => $evolution)
-
                             <!-- Pokemon -->
                             <div
                                 class="flex flex-col items-center 
