@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BasePokemon;
+use App\Models\Trainer;
+use App\Http\Controllers\TrainerController;
 use Illuminate\Http\Request;
 
 class BasePokemonController extends Controller
@@ -13,6 +15,11 @@ class BasePokemonController extends Controller
     public function index()
     {
         $pokemons = BasePokemon::orderBy('pokedex_id')->get();
+        $user = auth()->user();
+        if ($user && $user->role === 'trainer') {
+            $trainer = Trainer::where('user_id', $user->id)->first();
+            return (new TrainerController())->showPokedex($trainer);
+        }
 
         return view('pokedex', compact('pokemons'));
     }

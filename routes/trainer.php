@@ -12,5 +12,6 @@ Route::middleware(['auth', 'role:trainer', 'verified'])->group(function () {
     Route::get('/trainer/{trainer}/edit', [TrainerController::class, 'edit'])->name('trainer.edit');
     Route::put('/trainer/{trainer}', [TrainerController::class, 'update'])->name('trainer.update');
     Route::put('/trainer/{trainer}', [TrainerController::class, 'updatePokemonsCaught'])->name('trainer.updatePokemonsCaught');
+    Route::put('/trainer/{trainer}/set-starter', [TrainerController::class, 'setStarterPokemon'])->name('trainer.setStarterPokemon');
     Route::delete('/trainer/{trainer}', [TrainerController::class, 'destroy'])->name('trainer.destroy');
 });

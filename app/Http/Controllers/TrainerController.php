@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\BasePokemon;
 use App\Models\Trainer;
+use App\Models\Pokemon;
+use App\Http\Controllers\PokemonController;
 use Illuminate\Http\Request;
 
 class TrainerController extends Controller
@@ -42,16 +44,22 @@ class TrainerController extends Controller
 
     public function showPokedex(Trainer $trainer)
     {
-        $pokemons = BasePokemon::orderBy('pokedex_id')->get();
-        if (str_contains($trainer->pokemons_caught, '|')) {
-            $pokemonsCaught = explode('|', $trainer->pokemons_caught);
-        } elseif ($trainer->pokemons_caught !== '') {
-            $pokemonsCaught = [$trainer->pokemons_caught];
-        } else {
-            $pokemonsCaught = [];
+        $pokemonsCaught = $trainer->pokemons_caught;
+        $uniquePokemonsCaught = [];
+        if (str_contains($pokemonsCaught, '|')) {
+            $uniquePokemonsCaught = array_unique(explode('|', $pokemonsCaught));
+        } elseif ($pokemonsCaught !== '') {
+            $uniquePokemonsCaught = [$pokemonsCaught];
         }
 
-        return view('trainer.pokedex', compact('trainer', 'pokemons', 'pokemonsCaught'));
+        $uniquePokemonCaughtIds = [];
+        foreach($uniquePokemonsCaught as $pokemonCaught) {
+            $uniquePokemonCaughtIds[] = Pokemon::where('id', $pokemonCaught)->first()->pokedex_id;
+        }
+
+        $pokemons = BasePokemon::orderBy('pokedex_id')->get();
+
+        return view('trainer.pokedex', compact('trainer', 'pokemons', 'uniquePokemonCaughtIds'));
     }
 
     /**
@@ -79,6 +87,20 @@ class TrainerController extends Controller
         $trainer->update($validated);
 
         return redirect()->back()->with('success', 'Pokémon/s added to inventory.');
+    }
+
+    public function setStarterPokemon(Request $request, Trainer $trainer)
+    {
+        $request->validate([
+            'starter_pokemon_id' => ['required', 'string', 'exists:base_pokemon,pokedex_id'],
+        ]);
+
+        $basePokemon = BasePokemon::where('pokedex_id', $request->starter_pokemon_id)->first();
+        $starterPokemon = (new PokemonController())->store($basePokemon, $trainer);
+
+        $trainer->update(['pokemons_caught' => $starterPokemon->id]);
+
+        return redirect()->back()->with('success', 'Starter Pokémon set successfully.');
     }
 
     /**

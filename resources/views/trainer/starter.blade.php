@@ -22,11 +22,11 @@
             <x-secondary-button type="submit" class="md:px-6 md:text-md">Log Out</x-secondary-button>
         </form>
     </x-slot:navLinks>
-    <form method="POST" action="{{ route('trainer.updatePokemonsCaught', $trainer) }}">
+    <form method="POST" action="{{ route('trainer.setStarterPokemon', $trainer) }}">
         @csrf
         @method('PUT')
 
-        <input id="pokemons_caught" type="hidden" name="pokemons_caught" value="001">
+        <input id="starter_pokemon_id" type="hidden" name="starter_pokemon_id" value="001">
         <div class="border-2 px-6 py-4 border-black max-w-[270px] md:max-w-[700px] rounded flex flex-col items-center">
             <h1 class="text-center md:text-xl mt-2">Welcome, {{ $trainer->name }}! Choose your starter Pokémon</h1>
             <div class="flex">
@@ -60,7 +60,7 @@
                     currentIndex = currentIndex + offset;
                 }
 
-                document.getElementById('pokemons_caught').value = starterPokemons[currentIndex].pokedex_id;
+                document.getElementById('starter_pokemon_id').value = starterPokemons[currentIndex].pokedex_id;
                 document.getElementById('pokemon_preview').src = starterPokemons[currentIndex].sprite_url;
                 document.getElementById('pokemon_name').innerText = starterPokemons[currentIndex].name;
             }

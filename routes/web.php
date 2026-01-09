@@ -13,14 +13,15 @@ Route::get('/dashboard', function () {
     $user = auth()->user();
     if ($user->role === 'trainer') {
         $trainer = Trainer::where('user_id', $user->id)->first();
-
         if ($trainer->pokemons_caught === '') {
             return redirect()->route('starter');
         }
+
+        return view('trainer.dashboard');
     }
 
-    return view('trainer.dashboard');
-})->middleware(['auth', 'role:trainer', 'verified'])->name('dashboard');
+    return view('pokedex');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/starter', function () {
     $user = auth()->user();
