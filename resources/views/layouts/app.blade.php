@@ -20,7 +20,7 @@
         @endif
     </head>
 <body class="font-mono">
-    <header class="p-4 md:px-6 fixed bg-white w-full">
+    <header class="p-4 md:px-6 fixed bg-white w-full z-50">
         <div class="flex justify-between">
             <a href="{{ route('dashboard') }}" class="flex items-center gap-2">
             <img src="{{ asset('images/pokeball.png') }}" alt="Pokémon Logo" class="w-8 md:w-10">
