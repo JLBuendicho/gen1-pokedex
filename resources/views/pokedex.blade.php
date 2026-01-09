@@ -1,14 +1,15 @@
 <x-layout>
 
-    <!-- search moto -->
-
-    <div class="flex justify-end p-2">
+    <!-- Search Box -->
+    <div class="flex justify-end p-2 sticky top-16 z-50 bg-white">
         <input id="pokemonSearch" type="text" placeholder="Search Pokémon..."
-            class="border rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring focus:ring-blue-300">
+            class="border rounded-lg px-4 py-2 w-64
+                   transition-all duration-300 ease-in-out
+                   opacity-100
+                   hover:opacity-100 focus:opacity-100">
     </div>
 
-    <!-- cards -->
-
+    <!-- Cards -->
     <div id="pokemonGrid" class="flex flex-wrap gap-5 p-10 justify-center">
         @foreach ($pokemons as $pokemon)
             <div class="pokemon-card" data-name="{{ strtolower($pokemon->name) }}" data-id="{{ $pokemon->pokedex_id }}">
@@ -21,11 +22,12 @@
         @endforeach
     </div>
 
-    <!-- Script ng Search -->
+    <!-- Scripts -->
     <script>
         const searchInput = document.getElementById('pokemonSearch');
         const cards = document.querySelectorAll('.pokemon-card');
 
+        /* 🔍 Search Filter */
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase();
 
@@ -39,6 +41,15 @@
                     card.style.display = 'none';
                 }
             });
+        });
+
+        /* 🌫 Fade on Scroll */
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 120) {
+                searchInput.classList.add('opacity-40');
+            } else {
+                searchInput.classList.remove('opacity-40');
+            }
         });
     </script>
 
