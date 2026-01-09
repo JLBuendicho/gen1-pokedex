@@ -17,32 +17,27 @@
         <!-- Previous Button -->
         <div class="absolute inset-x-0 bottom-4 flex justify-between px-8">
 
-            @if ($prevPokemon)
-                <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
-                    class="px-4 py-2 bg-white text-gray
-                  bg-white text-gray rounded-sm
-                  hover:bg-black hover:text-white
-                  active:translate-y-[1px]
-                  transition">
-                    ← Previous
-                </a>
-            @endif
+            <!-- Previous Button -->
+            <a href="{{ route('pokemons.show', $prevPokemon->pokedex_id) }}"
+                class="px-4 py-2 bg-white text-gray rounded-sm
+               hover:bg-black hover:text-white
+               active:translate-y-[1px]
+               transition">
+                ← Previous
+            </a>
 
             <!-- Next Button -->
-            @if ($nextPokemon)
-                <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
-                    class="px-4 py-2 bg-white text-gray
-                  rounded-sm 
-                  hover:bg-black hover:text-white
-                  active:translate-y-[1px]
-                  transition">
-                    Next →
-                </a>
-            @endif
+            <a href="{{ route('pokemons.show', $nextPokemon->pokedex_id) }}"
+                class="px-4 py-2 bg-white text-gray rounded-sm
+               hover:bg-black hover:text-white
+               active:translate-y-[1px]
+               transition">
+                Next →
+            </a>
 
         </div>
 
-        <!-- Main Card --> 
+        <!-- Main Card -->
         <div class="border-black border-2 bg-slate-50 max-w-5xl mx-auto rounded-xl shadow-lg p-8">
 
             <!-- Header -->
@@ -142,8 +137,7 @@
 
                 <div class="flex flex-wrap gap-3">
                     @forelse ($baseMoves as $move)
-                        <span
-                            class="flex items-center px-3 py-1 text-sm font-medium">
+                        <span class="flex items-center px-3 py-1 text-sm font-medium">
                             {{ $move }}
                         </span>
                     @empty
