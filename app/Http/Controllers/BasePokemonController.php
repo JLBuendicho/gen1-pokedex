@@ -85,9 +85,17 @@ class BasePokemonController extends Controller
             ->orderBy('pokedex_id')
             ->first();
 
+        if (!$nextPokemon) {
+            $nextPokemon = BasePokemon::orderBy('pokedex_id')->first();
+        }
+
         $prevPokemon = BasePokemon::where('pokedex_id', '<', $id)
             ->orderByDesc('pokedex_id')
             ->first();
+
+        if (!$prevPokemon) {
+            $prevPokemon = BasePokemon::orderByDesc('pokedex_id')->first();
+        }
 
         return view('pokemons.show', compact(
             'pokemon',
