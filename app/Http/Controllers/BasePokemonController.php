@@ -45,6 +45,8 @@ class BasePokemonController extends Controller
      */
     public function show($id)
     {
+
+        //Base Moves
         $pokemon = BasePokemon::where('pokedex_id', $id)->firstOrFail();
 
         $baseMoves = \DB::table('base_pokemon')
@@ -62,12 +64,16 @@ class BasePokemonController extends Controller
             ->unique()
             ->values();
 
+
+            //Base Abilities
         $abilities = \DB::table('base_pokemon')
             ->where('pokedex_id', $pokemon->pokedex_id)
             ->whereNotNull('base_abilities')
             ->distinct()
             ->pluck('base_abilities');
 
+
+        //Evolutions
         $evolutionLineIds = explode('|', $pokemon->evolution_line_id);
         $evolutions = [];
 
@@ -81,6 +87,7 @@ class BasePokemonController extends Controller
             $evolutions = [$evolutions[0]];
         }
 
+        // Next and Previous Pokemon
         $nextPokemon = BasePokemon::where('pokedex_id', '>', $id)
             ->orderBy('pokedex_id')
             ->first();

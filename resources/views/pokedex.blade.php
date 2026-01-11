@@ -27,7 +27,7 @@
         const searchInput = document.getElementById('pokemonSearch');
         const cards = document.querySelectorAll('.pokemon-card');
 
-        /* 🔍 Search Filter */
+        /* Search Filter */
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase();
 
@@ -43,7 +43,7 @@
             });
         });
 
-        /* 🌫 Fade on Scroll */
+        /* Fade on Scroll */
         window.addEventListener('scroll', () => {
             if (window.scrollY > 120) {
                 searchInput.classList.add('opacity-40');
