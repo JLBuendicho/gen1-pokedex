@@ -49,6 +49,7 @@ class RegisteredUserController extends Controller
             Trainer::create([
                 'user_id' => $user->id,
                 'pokemons_caught' => '',
+                'pokemons_caught_history' => '',
                 'pokemon_team' => '',
             ]);
         }

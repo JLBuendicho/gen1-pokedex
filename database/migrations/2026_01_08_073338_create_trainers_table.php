@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('pokemons_caught')->nullable();
+            $table->string('pokemons_caught_history')->nullable();
             $table->string('pokemon_team')->nullable();
             $table->timestamps();
         });

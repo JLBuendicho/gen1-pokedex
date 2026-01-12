@@ -22,4 +22,9 @@ class Pokemon extends Model
         'move3',
         'move4',
     ];
+
+    public function basePokemon()
+    {
+        return $this->belongsTo(BasePokemon::class, 'pokedex_id', 'pokedex_id');
+    }
 }

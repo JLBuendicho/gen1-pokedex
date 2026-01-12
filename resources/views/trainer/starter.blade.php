@@ -30,19 +30,19 @@
         <div class="border-2 px-6 py-4 border-black max-w-[270px] md:max-w-[700px] rounded flex flex-col items-center">
             <h1 class="text-center md:text-xl mt-2">Welcome, {{ $trainer->name }}! Choose your starter Pokémon</h1>
             <div class="flex">
-                <button type="button" class="text-2xl px-2 hover:bg-black hover:text-white hover:rounded"
-                    onclick="selectPokemon(-1)">⮜</button>
+                <button type="button" class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded"
+                    onclick="selectPokemon(-1)"><</button>
                 <div>
-                    <img id="pokemon_preview" src="{{ asset('images/prof-oak.png') }}" alt="avatar"
+                    <img id="pokemon_preview" src="{{ asset('images/prof-oak.png') }}" alt="pokemon"
                         class="h-24 md:h-56">
                     <h1 id="pokemon_name" class="text-center md:text-xl"></h1>
                 </div>
-                <button type="button" class="text-2xl px-2 hover:bg-black hover:text-white hover:rounded"
-                    onclick="selectPokemon(1)">⮞</button>
+                <button type="button" class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded"
+                    onclick="selectPokemon(1)">></button>
             </div>
         </div>
         <div
-            class="p-2 m-4 max-w-[270px] md:max-w-none flex flex-wrap gap-2 justify-center border-2 border-black rounded">
+            class="p-2 mt-4 max-w-[270px] md:max-w-none flex flex-wrap gap-2 justify-center border-2 border-black rounded">
             <x-primary-button type="submit" class="w-28 h-12 md:w-32 justify-center">Choose</x-primary-button>
         </div>
         <script>

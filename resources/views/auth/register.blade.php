@@ -12,9 +12,9 @@
             <x-input-label for="avatar_url">Choose your Avatar!</x-input-label>
             <input id="avatar_url" type="hidden" name="avatar_url" value="images/trainer0.png">
             <div class="flex gap-1 m-2">
-                <button type="button" class="text-2xl px-2 hover:bg-black hover:text-white hover:rounded" onclick="selectAvatar(-1)">⮜</button>
+                <button type="button" class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded" onclick="selectAvatar(-1)"><</button>
                         <img id="avater_preview" src="{{ asset('images/trainer0.png') }}" alt="avatar" class="h-24">
-                <button type="button" class="text-2xl px-2 hover:bg-black hover:text-white hover:rounded" onclick="selectAvatar(1)">⮞</button>
+                <button type="button" class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded" onclick="selectAvatar(1)">></button>
             </div>
             <script>
                 const basePath = "{{ asset('images') }}";

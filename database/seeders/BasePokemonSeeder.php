@@ -13,8 +13,6 @@ class BasePokemonSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('base_pokemon')->truncate();
-
         $pokemon = [
             // FULL GEN 1 POKÉDEX (001–151)
 

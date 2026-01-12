@@ -99,7 +99,7 @@
             </div>
 
             <!-- Description -->
-            <div class="mt-8 border-2 border-black rounded-xl bg-slate-50 p-6 bg-white shadow-sm">
+            <div class="mt-8 border-2 border-black rounded-xl p-6 bg-white shadow-sm">
                 <h3 class="text-lg font-semibold mb-3 flex items-center gap-2">
                     🕮 Description
                 </h3>

@@ -42,9 +42,20 @@ class TrainerController extends Controller
         //
     }
 
-    public function showPokedex(Trainer $trainer)
+    public function showTradeLobby()
     {
-        $pokemonsCaught = $trainer->pokemons_caught;
+        $user = auth()->user();
+        $trainer = Trainer::where('user_id', $user->id)->first();
+        $peers = Trainer::where('id', '!=', $trainer->id)->with('user')->get();
+
+        return view('trainer.trade.lobby', compact('peers'));
+    }
+
+    public function showPokedex()
+    {
+        $user = auth()->user();
+        $trainer = Trainer::where('user_id', $user->id)->first();
+        $pokemonsCaught = $trainer->pokemons_caught_history;
         $uniquePokemonsCaught = [];
         if (str_contains($pokemonsCaught, '|')) {
             $uniquePokemonsCaught = array_unique(explode('|', $pokemonsCaught));
@@ -53,13 +64,13 @@ class TrainerController extends Controller
         }
 
         $uniquePokemonCaughtIds = [];
-        foreach($uniquePokemonsCaught as $pokemonCaught) {
+        foreach ($uniquePokemonsCaught as $pokemonCaught) {
             $uniquePokemonCaughtIds[] = Pokemon::where('id', $pokemonCaught)->first()->pokedex_id;
         }
 
         $pokemons = BasePokemon::orderBy('pokedex_id')->get();
 
-        return view('trainer.pokedex', compact('trainer', 'pokemons', 'uniquePokemonCaughtIds'));
+        return view('trainer.pokedex', compact('pokemons', 'uniquePokemonCaughtIds'));
     }
 
     /**
@@ -98,7 +109,7 @@ class TrainerController extends Controller
         $basePokemon = BasePokemon::where('pokedex_id', $request->starter_pokemon_id)->first();
         $starterPokemon = (new PokemonController())->store($basePokemon, $trainer);
 
-        $trainer->update(['pokemons_caught' => $starterPokemon->id]);
+        $trainer->update(['pokemons_caught' => $starterPokemon->id, 'pokemons_caught_history' => $starterPokemon->id]);
 
         return redirect()->back()->with('success', 'Starter Pokémon set successfully.');
     }
