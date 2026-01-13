@@ -29,7 +29,14 @@ class AdminController extends Controller
 
     public function tradeOffers()
     {
-        $trades = TradeOffer::latest()->get();
+        $trades = TradeOffer::with([
+            'fromTrainer.user',
+            'toTrainer.user',
+            'offeredPokemon',
+            'requestedPokemon'
+        ])
+            ->latest()
+            ->get();
 
         return view('admin.trade_offers', compact('trades'));
     }

@@ -15,45 +15,38 @@
                 </thead>
 
                 <tbody>
-                    @forelse ($trades as $trade)
-                        <tr class="border-t hover:bg-gray-50">
-                            <td class="p-3">{{ $trade->id }}</td>
+                    @foreach ($trades as $trade)
+                        <tr class="text-center border-b">
 
+                            <!-- Sender -->
                             <td class="p-3">
-                                {{ $trade->sender->name ?? 'Unknown' }}
+                                {{ $trade->fromTrainer->user->name ?? 'Unknown' }}
                             </td>
 
+                            <!-- Receiver -->
                             <td class="p-3">
-                                {{ $trade->receiver->name ?? 'Unknown' }}
+                                {{ $trade->toTrainer->user->name ?? 'Unknown' }}
                             </td>
 
+                            <!-- Offered Pokemon -->
                             <td class="p-3">
-                                {{ $trade->pokemon->name ?? 'N/A' }}
+                                {{ $trade->offeredPokemon->name ?? 'N/A' }}
                             </td>
 
-                            <td class="p-3">
-                                <span
-                                    class="px-2 py-1 rounded text-sm
-                                    {{ $trade->status === 'accepted' ? 'bg-green-200 text-green-800' : '' }}
-                                    {{ $trade->status === 'pending' ? 'bg-yellow-200 text-yellow-800' : '' }}
-                                    {{ $trade->status === 'rejected' ? 'bg-red-200 text-red-800' : '' }}
-                                ">
-                                    {{ ucfirst($trade->status) }}
-                                </span>
+                            <!-- Status -->
+                            <td class="p-3 capitalize">
+                                {{ $trade->status }}
                             </td>
 
+                            <!-- Date -->
                             <td class="p-3">
                                 {{ $trade->created_at->format('M d, Y') }}
                             </td>
+
                         </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="p-6 text-center text-gray-500">
-                                No trades found.
-                            </td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                 </tbody>
+
             </table>
         </div>
     </div>
