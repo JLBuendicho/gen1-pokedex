@@ -1,9 +1,5 @@
 <x-app-layout class="pt-20">
     <x-slot:navLinks>
-        <form method="GET" action="{{ route('profile.edit') }}">
-            @csrf
-            <x-secondary-button type="submit" class="md:px-6 md:text-md">Profile</x-secondary-button>
-        </form>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <x-secondary-button type="submit" class="md:px-6 md:text-md">Log Out</x-secondary-button>
