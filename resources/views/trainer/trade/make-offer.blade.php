@@ -82,7 +82,7 @@
                         <button type="button"
                             class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded"
                             onclick="selectTrainerPokemon('A', -1)">
-                            p</button>
+                            <</button>
                         <div>
                             <img id="pokemon_preview_A" src="{{ $trainerAPokemons[0]->basePokemon->sprite_url }}"
                                 alt="pokemon" class="h-32">
@@ -105,7 +105,7 @@
                         <button type="button"
                             class="text-2xl text-bold px-2 hover:bg-black hover:text-white hover:rounded"
                             onclick="selectTrainerPokemon('B', -1)">
-                            p</button>
+                            <</button>
                         <div>
                             <img id="pokemon_preview_B" src="{{ $trainerBPokemons[0]->basePokemon->sprite_url }}"
                                 alt="pokemon" class="h-32">

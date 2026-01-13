@@ -27,4 +27,14 @@ class Pokemon extends Model
     {
         return $this->belongsTo(BasePokemon::class, 'pokedex_id', 'pokedex_id');
     }
+
+    public function prevTrainer()
+    {
+        return $this->belongsTo(Trainer::class, 'prev_trainer_id');
+    }
+
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class, 'current_trainer_id');
+    }
 }

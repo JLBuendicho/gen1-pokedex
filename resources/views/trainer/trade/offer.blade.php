@@ -60,19 +60,19 @@
                     class="w-full h-12 justify-center">Return</x-primary-button></a>
         @endif
         @if ($trainer->id === $tradeOffer->to_trainer_id)
-            <form class="flex w-[45%]" method="POST" action="{{ route('tradeOffer.trainer.accept', $tradeOffer) }}">
+            <form class="flex w-full" method="POST" action="{{ route('tradeOffer.trainer.accept', $tradeOffer) }}">
                 @csrf
                 @method('put')
                 <x-primary-button type="submit" class="w-full h-12 justify-center">Accept</x-primary-button>
             </form>
-            <form class="flex w-[45%]" method="POST" action="{{ route('tradeOffer.trainer.reject', $tradeOffer) }}">
+            <form class="flex w-full" method="POST" action="{{ route('tradeOffer.trainer.reject', $tradeOffer) }}">
                 @csrf
                 @method('put')
                 <x-primary-button type="submit" class="w-full h-12 justify-center">Reject</x-primary-button>
             </form>
-            <a href="" class="w-[45%]"><x-primary-button type="button"
-                    class="w-full h-12 justify-center">Counter Offer</x-primary-button></a>
-            <a href="{{ route('tradeOffer.inbox') }}" class="w-[45%]"><x-primary-button type="button"
+            {{-- <a href="" class="w-[45%]"><x-primary-button type="button"
+                    class="w-full h-12 justify-center">Counter Offer</x-primary-button></a> --}}
+            <a href="{{ route('tradeOffer.inbox') }}" class="w-[95%]"><x-primary-button type="button"
                     class="w-full h-12 justify-center">Return</x-primary-button></a>
         @endif
     </div>

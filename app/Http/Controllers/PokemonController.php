@@ -34,7 +34,29 @@ class PokemonController extends Controller
             'pokedex_id' => $basePokemon->pokedex_id,
             'prev_trainer_id' => null,
             'current_trainer_id' => $trainer->id,
-            'abilities' => $basePokemon->abilities,
+            'abilities' => $basePokemon->base_abilities,
+            'hp' => mt_rand($basePokemon->min_hp, $basePokemon->max_hp),
+            'attack' => mt_rand($basePokemon->min_attack, $basePokemon->max_attack),
+            'defense' => mt_rand($basePokemon->min_defense, $basePokemon->max_defense),
+            'special_attack' => mt_rand($basePokemon->min_special_attack, $basePokemon->max_special_attack),
+            'special_defense' => mt_rand($basePokemon->min_special_defense, $basePokemon->max_special_defense),
+            'speed' => mt_rand($basePokemon->min_speed, $basePokemon->max_speed),
+            'move1' => $basePokemon->base_move1,
+            'move2' => $basePokemon->base_move2,
+            'move3' => $basePokemon->base_move3,
+            'move4' => $basePokemon->base_move4,
+        ]);
+
+        return $pokemon;
+    }
+
+    public function storeFree(BasePokemon $basePokemon)
+    {
+        $pokemon = Pokemon::create([
+            'pokedex_id' => $basePokemon->pokedex_id,
+            'prev_trainer_id' => null,
+            'current_trainer_id' => null,
+            'abilities' => $basePokemon->base_abilities,
             'hp' => mt_rand($basePokemon->min_hp, $basePokemon->max_hp),
             'attack' => mt_rand($basePokemon->min_attack, $basePokemon->max_attack),
             'defense' => mt_rand($basePokemon->min_defense, $basePokemon->max_defense),
@@ -53,9 +75,11 @@ class PokemonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pokemon $pokemon)
+    public function show($id)
     {
-        //
+        $pokemon = Pokemon::with(['basePokemon', 'prevTrainer.user', 'trainer.user'])->findOrFail($id);
+        // return response()->json($pokemon);
+        return view('pokemons.owned.show', compact('pokemon'));
     }
 
     /**

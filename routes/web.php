@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Trainer;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BasePokemonController;
+use App\Http\Controllers\PokemonController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,8 +39,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/pokemons', [BasePokemonController::class, 'index'])->name('pokemons.index');
-Route::get('/pokemons/{pokedexId}', [BasePokemonController::class, 'show'])->name('pokemons.show');
+Route::get('/base-pokemons', [BasePokemonController::class, 'index'])->name('pokemons.index');
+Route::get('/base-pokemons/{pokedexId}', [BasePokemonController::class, 'show'])->name('pokemons.show');
+
+Route::get('/owned-pokemons/{id}', [PokemonController::class, 'show'])->name('owned.pokemons.show');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/trainer.php';

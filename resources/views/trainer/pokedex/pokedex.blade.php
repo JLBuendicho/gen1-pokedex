@@ -12,11 +12,32 @@
 
     <!-- search moto -->
 
-    <div class="flex justify-center md:justify-end p-2">
+    <div class="text-sm flex justify-between items-center p-2">
+        <a href="{{ route('dashboard') }}"
+            class="inline-flex items-center gap-2 mb-6 px-4 py-2
+          bg-white text-gray rounded-sm
+          hover:bg-black hover:text-white
+          active:translate-y-[1px]
+          transition">
+            ⬅ Back to Dashboard
+        </a>
         <input id="pokemonSearch" type="text" placeholder="Search Pokémon..."
             class="border rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring focus:ring-blue-300">
     </div>
 
+    @if (session('success'))
+        <h1 class="w-[90%] text-center">{{ session('success') }}</h1>
+    @endif
+    @if (session('error'))
+        <h1 class="w-[90%] text-center">{{ session('error') }}</h1>
+    @endif
+    @if ($errors->any)
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="w-[95%] text-center">{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
     <!-- cards -->
 
     <div id="pokemonGrid" class="flex flex-wrap gap-5 p-10 justify-center">
@@ -24,7 +45,7 @@
             @if (in_array($pokemon->pokedex_id, $uniquePokemonCaughtIds))
                 <div class="pokemon-card" data-name="{{ strtolower($pokemon->name) }}"
                     data-id="{{ $pokemon->pokedex_id }}">
-                    <x-cards.a :href="route('pokemons.show', ['pokedexId' => $pokemon->pokedex_id])" :image="$pokemon->sprite_url" class="p-4 w-48 hover:shadow-lg">
+                    <x-cards.a :href="route('trainer.pokedex.showPokemon', ['pokedexId' => $pokemon->pokedex_id])" :image="$pokemon->sprite_url" class="p-4 w-48 hover:shadow-lg">
                         <x-slot:header>
                             {{ $pokemon->pokedex_id }} {{ $pokemon->name }}
                         </x-slot:header>
