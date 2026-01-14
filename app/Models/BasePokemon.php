@@ -8,11 +8,6 @@ class BasePokemon extends Model
 {
     protected $table = 'base_pokemon';
 
-    protected $primaryKey = 'pokedex_id';
-    public $incrementing = false;
-
-    protected $keyType = 'integer';
-
     protected $fillable = [
         'pokedex_id',
         'name',

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\BasePokemon;
 
 class TradeOffer extends Model
 {
@@ -27,12 +26,12 @@ class TradeOffer extends Model
     
     public function offeredPokemon()
     {
-        return $this->belongsTo(BasePokemon::class, 'offered_pokemon', 'pokedex_id');
+        return $this->belongsTo(BasePokemon::class, 'offered_pokemon');
     }
 
     public function requestedPokemon()
     {
-        return $this->belongsTo(BasePokemon::class, 'requested_pokemon', 'pokedex_id');
+        return $this->belongsTo(BasePokemon::class, 'requested_pokemon');
     }
 
 }
