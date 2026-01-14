@@ -32,8 +32,8 @@ class AdminController extends Controller
         $trades = TradeOffer::with([
             'fromTrainer.user',
             'toTrainer.user',
-            'offeredPokemon.basePokemon',
-            'requestedPokemon.basePokemon',
+            'offeredPokemon',
+            'requestedPokemon'
         ])
             ->latest()
             ->get();

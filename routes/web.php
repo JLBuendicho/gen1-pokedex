@@ -20,8 +20,6 @@ Route::get('/dashboard', function () {
         }
 
         return view('trainer.dashboard');
-    } elseif ($user->role === 'admin') {
-        return view('admin.dashboard');
     }
 
     return redirect()->route('admin.dashboard');

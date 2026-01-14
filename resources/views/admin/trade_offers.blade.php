@@ -30,7 +30,7 @@
 
                             <!-- Offered Pokemon -->
                             <td class="p-3">
-                                {{ $trade->offeredPokemon->basePokemon->name ?? 'N/A' }} for {{ $trade->requestedPokemon->basePokemon->name }}
+                                {{ $trade->offeredPokemon->name ?? 'N/A' }}
                             </td>
 
                             <!-- Status -->
